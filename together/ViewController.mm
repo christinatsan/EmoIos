@@ -242,8 +242,7 @@ NSString *mainEmotion;
     for(int i=0;i<=6;i++){
         if(emo[i]>largest)
             largest = emo[i];
-        if(emo[i] == largest)
-            largest = emo[1];
+                    
     }
     
     for(int i=0;i<=6;i++){
