@@ -12,14 +12,27 @@
 @interface ViewController : UIViewController <CvVideoCameraDelegate>
 {
     CvVideoCamera *camera;
+    
 }
+@property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *swipeDown;
+
+@property (strong, nonatomic) IBOutlet UIRotationGestureRecognizer *rotationSwipe;
+
+// Audio Players
+@property (nonatomic, strong) AVAudioPlayer *happyPlayer;
+@property (nonatomic, strong) AVAudioPlayer *disgustPlayer;
+@property (nonatomic, strong) AVAudioPlayer *neutralPlayer;
+@property (nonatomic, strong) AVAudioPlayer *sadPlayer;
+@property (nonatomic, strong) AVAudioPlayer *fearPlayer;
+@property (nonatomic, strong) AVAudioPlayer *surprisedPlayer;
+@property (nonatomic, strong) AVAudioPlayer *angryPlayer;
+@property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *swipeUp;
 
 @property (nonatomic,retain) CvVideoCamera *camera;
-@property (weak, nonatomic) IBOutlet UIButton *sendButton;
-@property (weak, nonatomic) IBOutlet UIButton *resButton;
-
-@property (weak, nonatomic) IBOutlet UIButton *start;
 @property (weak, nonatomic) IBOutlet UITextView *resultText;
+@property (weak, nonatomic) IBOutlet UIToolbar *onButton;
+@property (weak, nonatomic) IBOutlet UIToolbar *offButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *resultButton;
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *camView;

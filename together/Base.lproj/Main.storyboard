@@ -17,33 +17,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ffr-uF-W5R">
-                                <rect key="frame" x="150" y="20" width="300" height="300"/>
+                                <rect key="frame" x="164" y="91" width="251" height="251"/>
                                 <animations/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Soe-C5-EwF">
-                                <rect key="frame" x="313" y="356" width="93" height="30"/>
-                                <animations/>
-                                <state key="normal" title="Send Face"/>
-                                <connections>
-                                    <action selector="sendFace:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0aW-QL-edd"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M9T-bj-g6X">
-                                <rect key="frame" x="208" y="385" width="97" height="30"/>
-                                <animations/>
-                                <state key="normal" title="start cam"/>
-                                <connections>
-                                    <action selector="startCam:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9zE-uY-vXw"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UQV-Bc-aO9">
-                                <rect key="frame" x="295" y="328" width="46" height="30"/>
-                                <animations/>
-                                <state key="normal" title="Result"/>
-                                <connections>
-                                    <action selector="resultButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wtm-UP-Y6A"/>
-                                </connections>
-                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="V7x-fy-d14">
                                 <rect key="frame" x="232" y="416" width="115" height="30"/>
                                 <animations/>
@@ -51,35 +27,104 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6ro-tY-EGJ">
-                                <rect key="frame" x="261" y="443" width="104" height="75"/>
+                                <rect key="frame" x="261" y="393" width="104" height="75"/>
                                 <animations/>
                             </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8Gh-WT-yUb">
+                                <rect key="frame" x="-5" y="516" width="600" height="44"/>
+                                <subviews>
+                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W8H-tz-2I2">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <animations/>
+                                        <items>
+                                            <barButtonItem title="ON" id="joY-Ai-GEv">
+                                                <connections>
+                                                    <action selector="onClick:" destination="BYZ-38-t0r" id="aLh-Ay-7Sb"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem width="88" style="plain" systemItem="fixedSpace" id="KAl-Tn-eSO"/>
+                                            <barButtonItem title="Result" id="Cww-fs-uMk">
+                                                <connections>
+                                                    <action selector="resultClick:" destination="BYZ-38-t0r" id="sUZ-WA-3wS"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem width="86" style="plain" systemItem="fixedSpace" id="lkE-x8-Fdo"/>
+                                            <barButtonItem title="OFF" id="Hgn-Pr-h4E">
+                                                <connections>
+                                                    <action selector="offClick:" destination="BYZ-38-t0r" id="wQi-6s-zEM"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </items>
+                                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </toolbar>
+                                </subviews>
+                                <animations/>
+                            </stackView>
+                            <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6fv-2s-gq6">
+                                <rect key="frame" x="-20" y="11" width="324" height="44"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.33807981014251709" green="0.25257480144500732" blue="0.75911372900009155" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="EmoComputing" id="Kv8-dv-k8N">
+                                        <barButtonItem key="rightBarButtonItem" title="Settings" id="XJX-Vw-phY">
+                                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="V7x-fy-d14" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3La-vH-CO3"/>
-                            <constraint firstItem="M9T-bj-g6X" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3wC-9r-Hmh"/>
-                            <constraint firstItem="Ffr-uF-W5R" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="LGr-DW-pgU"/>
-                            <constraint firstItem="UQV-Bc-aO9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Wdt-5Z-zuN"/>
-                            <constraint firstItem="Soe-C5-EwF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cPB-5y-72g"/>
+                            <constraint firstItem="6fv-2s-gq6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4uq-FC-gmO"/>
                             <constraint firstItem="6ro-tY-EGJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gkU-cv-dMb"/>
                             <constraint firstItem="Ffr-uF-W5R" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rh0-8v-7TZ"/>
-                            <constraint firstItem="Soe-C5-EwF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="va1-Ft-Tli"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="e0j-SR-rd9" appends="YES" id="3EV-Ug-Vrs"/>
+                            <outletCollection property="gestureRecognizers" destination="4va-bc-ibn" appends="YES" id="0Oy-nw-qa8"/>
+                            <outletCollection property="gestureRecognizers" destination="2Uy-gq-J1G" appends="YES" id="i5J-Nm-fnF"/>
+                        </connections>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="camView" destination="Ffr-uF-W5R" id="xEJ-lK-uIz"/>
-                        <outlet property="resButton" destination="UQV-Bc-aO9" id="J4g-yD-dkT"/>
+                        <outlet property="offButton" destination="W8H-tz-2I2" id="4Vd-q4-Iul"/>
+                        <outlet property="onButton" destination="W8H-tz-2I2" id="Ath-Fx-rPe"/>
+                        <outlet property="resultButton" destination="Cww-fs-uMk" id="gZJ-8a-gCa"/>
                         <outlet property="resultText" destination="V7x-fy-d14" id="Kkg-im-vUv"/>
                         <outlet property="resultView" destination="6ro-tY-EGJ" id="YNS-uh-vig"/>
-                        <outlet property="sendButton" destination="Soe-C5-EwF" id="9eX-Bz-fIW"/>
-                        <outlet property="start" destination="M9T-bj-g6X" id="1fr-hB-m25"/>
+                        <outlet property="rotationSwipe" destination="2Uy-gq-J1G" id="JcB-Ra-uNT"/>
+                        <outlet property="swipeDown" destination="e0j-SR-rd9" id="lum-7K-jbp"/>
+                        <outlet property="swipeUp" destination="4va-bc-ibn" id="Cy5-vZ-hQ9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="down" id="e0j-SR-rd9">
+                    <connections>
+                        <action selector="swipeDownAction:" destination="BYZ-38-t0r" id="2s9-Jj-jLy"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="up" id="4va-bc-ibn">
+                    <connections>
+                        <action selector="swipeUpAction:" destination="BYZ-38-t0r" id="fQ1-ed-3lt"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <rotationGestureRecognizer rotation="1" id="2Uy-gq-J1G">
+                    <connections>
+                        <action selector="rotationSwipeAction:" destination="BYZ-38-t0r" id="iQa-0p-4cj"/>
+                    </connections>
+                </rotationGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="260" y="306"/>
+            <point key="canvasLocation" x="310" y="282"/>
         </scene>
     </scenes>
 </document>
