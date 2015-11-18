@@ -9,23 +9,26 @@
 #import <UIKit/UIKit.h>
 #import <opencv2/videoio/cap_ios.h>
 
+
 @interface ViewController : UIViewController <CvVideoCameraDelegate>
 {
     CvVideoCamera *camera;
     
 }
 @property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *swipeDown;
+@property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *swipeRight;
 
-@property (strong, nonatomic) IBOutlet UIRotationGestureRecognizer *rotationSwipe;
+
+@property (weak, nonatomic) IBOutlet UIImageView *backView;
+
+// StoryBoard settings
+
+
+
 
 // Audio Players
-@property (nonatomic, strong) AVAudioPlayer *happyPlayer;
-@property (nonatomic, strong) AVAudioPlayer *disgustPlayer;
-@property (nonatomic, strong) AVAudioPlayer *neutralPlayer;
-@property (nonatomic, strong) AVAudioPlayer *sadPlayer;
-@property (nonatomic, strong) AVAudioPlayer *fearPlayer;
-@property (nonatomic, strong) AVAudioPlayer *surprisedPlayer;
-@property (nonatomic, strong) AVAudioPlayer *angryPlayer;
+@property (strong) AVAudioPlayer *directionsPlayer;
+
 @property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *swipeUp;
 
 @property (nonatomic,retain) CvVideoCamera *camera;

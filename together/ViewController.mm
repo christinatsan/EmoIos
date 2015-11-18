@@ -38,6 +38,8 @@ NSString *disgust;
 NSDictionary *emotions;
 NSString *mainEmotion;
 Boolean realtimeMode = true;
+AVAudioPlayer *player;
+AVAudioPlayer *happyPlayer, *sadPlayer, *disgustPlayer, *neutralPlayer, *fearPlayer, *angryPlayer, *surprisePlayer;
 
 
 -(cv::CascadeClassifier*)loadClassifier
@@ -52,8 +54,7 @@ Boolean realtimeMode = true;
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"back2.jpeg"]];
-    [self.view addSubview:backgroundView];
+    [self.backView setImage:[UIImage imageNamed:@"back2.jpg"]];
     
     self.resultText.text = @"";
     
@@ -72,63 +73,65 @@ Boolean realtimeMode = true;
 
     [self camTimer];
     
+    
     NSError *error = nil;
     
-    // Audio Player Initialization - figure out why some tracks dont play
+    // Audio Directions Initialization
     
-    NSBundle *mainBundle = [NSBundle mainBundle];
-    NSString *filePath = [mainBundle pathForResource:@"disgust" ofType:@"mp3"];
-    NSData *fileData = [NSData dataWithContentsOfFile:filePath];
+    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"directions"
+                                                              ofType:@"mp3"];
+    NSURL *soundFileURL = [NSURL fileURLWithPath:soundFilePath];
+    player = [[AVAudioPlayer alloc] initWithContentsOfURL:soundFileURL
+                                                                   error:nil];
+   
+     // Play directions on start of app
+    [self directionsTimer];
     
-
+    // Audio Player Initialization
     
-    self.disgustPlayer = [[AVAudioPlayer alloc] initWithData:fileData error:&error];
-    [self.disgustPlayer prepareToPlay];
+    NSString *happyFilePath = [[NSBundle mainBundle] pathForResource:@"bell"
+                                                              ofType:@"mp3"];
+    NSURL *happyFileURL = [NSURL fileURLWithPath:happyFilePath];
+    happyPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:happyFileURL
+                                                    error:nil];
     
-  //  NSBundle *mainBundle = [NSBundle mainBundle];
-    NSString *filePath2 = [mainBundle pathForResource:@"scream" ofType:@"mp3"];
-    NSData *fileData2 = [NSData dataWithContentsOfFile:filePath2];
+    NSString *sadFilePath = [[NSBundle mainBundle] pathForResource:@"well"
+                                                              ofType:@"mp3"];
+    NSURL *sadFileURL = [NSURL fileURLWithPath:sadFilePath];
+    sadPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:sadFileURL
+                                                         error:nil];
     
-    self.angryPlayer = [[AVAudioPlayer alloc] initWithData:fileData2 error:&error];
-    [self.angryPlayer prepareToPlay];
+    NSString *fearFilePath = [[NSBundle mainBundle] pathForResource:@"heartbeat"
+                                                              ofType:@"mp3"];
+    NSURL *fearFileURL = [NSURL fileURLWithPath:fearFilePath];
+    fearPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:fearFileURL
+                                                         error:nil];
     
-    NSBundle *mainBundle3 = [NSBundle mainBundle];
-    NSString *filePath3 = [mainBundle3 pathForResource:@"river" ofType:@"mp3"];
-    NSData *fileData3 = [NSData dataWithContentsOfFile:filePath3];
+    NSString *surpriseFilePath = [[NSBundle mainBundle] pathForResource:@"comic"
+                                                              ofType:@"mp3"];
+    NSURL *surpriseFileURL = [NSURL fileURLWithPath:surpriseFilePath];
+    surprisePlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:surpriseFileURL
+                                                         error:nil];
     
+    NSString *neutralFilePath = [[NSBundle mainBundle] pathForResource:@"river"
+                                                              ofType:@"mp3"];
+    NSURL *neutralFileURL = [NSURL fileURLWithPath:neutralFilePath];
+    neutralPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:neutralFileURL
+                                                         error:nil];
     
-    self.neutralPlayer = [[AVAudioPlayer alloc] initWithData:fileData3 error:&error];
-    [self.neutralPlayer prepareToPlay];
+    NSString *disgustFilePath = [[NSBundle mainBundle] pathForResource:@"disgust"
+                                                              ofType:@"mp3"];
+    NSURL *disgustFileURL = [NSURL fileURLWithPath:disgustFilePath];
+    disgustPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:disgustFileURL
+                                                         error:nil];
     
-    NSBundle *mainBundle4 = [NSBundle mainBundle];
-    NSString *filePath4 = [mainBundle4 pathForResource:@"heartbeat" ofType:@"mp3"];
-    NSData *fileData4 = [NSData dataWithContentsOfFile:filePath4];
+    NSString *angryFilePath = [[NSBundle mainBundle] pathForResource:@"scream"
+                                                              ofType:@"mp3"];
+    NSURL *angryFileURL = [NSURL fileURLWithPath:angryFilePath];
+    angryPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:angryFileURL
+                                                         error:nil];
     
-    self.fearPlayer = [[AVAudioPlayer alloc] initWithData:fileData4 error:&error];
-    [self.fearPlayer prepareToPlay];
-    
-    NSBundle *mainBundle5 = [NSBundle mainBundle];
-    NSString *filePath5 = [mainBundle5 pathForResource:@"bell" ofType:@"mp3"];
-    NSData *fileData5 = [NSData dataWithContentsOfFile:filePath5];
-    
-    
-    self.happyPlayer = [[AVAudioPlayer alloc] initWithData:fileData5 error:&error];
-    [self.happyPlayer prepareToPlay];
-    
-    NSBundle *mainBundle6 = [NSBundle mainBundle];
-    NSString *filePath6 = [mainBundle6 pathForResource:@"comic" ofType:@"mp3"];
-    NSData *fileData6 = [NSData dataWithContentsOfFile:filePath6];
-
-    self.surprisedPlayer = [[AVAudioPlayer alloc] initWithData:fileData6 error:&error];
-    [self.surprisedPlayer prepareToPlay];
-    
-    NSBundle *mainBundle7 = [NSBundle mainBundle];
-    NSString *filePath7 = [mainBundle7 pathForResource:@"well" ofType:@"mp3"];
-    NSData *fileData7 = [NSData dataWithContentsOfFile:filePath7];
-    
-    self.sadPlayer = [[AVAudioPlayer alloc] initWithData:fileData7 error:&error];
-    [self.sadPlayer prepareToPlay];
-}
+   }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -138,7 +141,7 @@ Boolean realtimeMode = true;
 // When swipe down turn realtime mode off
 - (IBAction)swipeDownAction:(id)sender {
     
-    [self.resultView setImage:[UIImage imageNamed:@"white.png"]];
+    [self.resultView setImage:nil];
     self.resultText.text= @"";
     realtimeMode = false;
     self.resultButton.enabled = YES;
@@ -146,19 +149,20 @@ Boolean realtimeMode = true;
 
 // When swipe up up turn realtime mode on
 - (IBAction)swipeUpAction:(id)sender {
-    [self.resultView setImage:[UIImage imageNamed:@"white.png"]];
+    [self.resultView setImage:nil];
     self.resultText.text= @"";
     realtimeMode = true;
     self.resultButton.enabled = NO;
-    [self.angryPlayer play];
+    
 }
 
-// If realtime mode is off tap twice to get result
+// If realtime mode is off swipe right to get result
 
-// Find different gesture for this too same as down swipe :(
-- (IBAction)rotationSwipeAction:(id)sender {
+- (IBAction)swipeRightGesture:(id)sender {
+    
     [self getResponse];
 }
+
 
 
 - (IBAction)onClick:(id)sender {
@@ -166,7 +170,7 @@ Boolean realtimeMode = true;
     self.resultText.text= @"";
     realtimeMode = true;
     self.resultButton.enabled = NO;
-    [self.angryPlayer play];
+   
     
     
 }
@@ -272,32 +276,32 @@ Boolean realtimeMode = true;
             [self findHighest];
             self.resultText.text = mainEmotion;
             if([mainEmotion isEqual: @"happy"]){
-                [self.resultView setImage:[UIImage imageNamed:@"happy.jpeg"]];
-                [self.happyPlayer play];
+                [self.resultView setImage:[UIImage imageNamed:@"happy.png"]];
+                [happyPlayer play];
             }
             if([mainEmotion  isEqual: @"surprise"]){
-                [self.surprisedPlayer play];
-                [self.resultView setImage:[UIImage imageNamed:@"surprise.jpeg"]];
+                [surprisePlayer play];
+                [self.resultView setImage:[UIImage imageNamed:@"surprise.png"]];
             }
             if([mainEmotion isEqual: @"fear"]){
-                [self.resultView setImage:[UIImage imageNamed:@"scared.jpeg"]];
-                [self.fearPlayer play];
+                [self.resultView setImage:[UIImage imageNamed:@"fear.png"]];
+                [fearPlayer play];
             }
             if([mainEmotion isEqual: @"sad"]){
-                [self.resultView setImage:[UIImage imageNamed:@"sad.jpeg"]];
-                [self.sadPlayer play];
+                [self.resultView setImage:[UIImage imageNamed:@"sad.png"]];
+                [sadPlayer play];
             }
             if([mainEmotion isEqual: @"neutral"]){
-                [self.resultView setImage:[UIImage imageNamed:@"neutral.jpeg"]];
-                [self.neutralPlayer play];
+                [self.resultView setImage:[UIImage imageNamed:@"neutral.png"]];
+                [neutralPlayer play];
             }
             if([mainEmotion isEqual: @"angry"]){
-                [self.resultView setImage:[UIImage imageNamed:@"angry.jpeg"]];
-                [self.angryPlayer play];
+                [self.resultView setImage:[UIImage imageNamed:@"angry.png"]];
+                [angryPlayer play];
             }
             if([mainEmotion isEqual: @"disgust"]){
-                [self.resultView setImage:[UIImage imageNamed:@"disgust.jpeg"]];
-                [self.disgustPlayer play];
+                [self.resultView setImage:[UIImage imageNamed:@"disgust.png"]];
+                [disgustPlayer play];
             }
         });
         
@@ -377,6 +381,17 @@ Boolean realtimeMode = true;
     });
     
     
+}
+
+- (NSTimer*) directionsTimer {
+    
+    return [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(directAudio:) userInfo:nil repeats:NO];
+}
+            
+- (void) directAudio:(NSTimer*)timer{
+    NSLog(@"timer called for audio");
+    [player play];
+                
 }
 
 - (NSTimer*) createTimer {

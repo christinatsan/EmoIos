@@ -16,6 +16,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oG9-32-g1o">
+                                <rect key="frame" x="-5" y="20" width="605" height="494"/>
+                                <animations/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="0Ap-az-i7p" appends="YES" id="eT2-oZ-wZL"/>
+                                </connections>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ffr-uF-W5R">
                                 <rect key="frame" x="164" y="91" width="251" height="251"/>
                                 <animations/>
@@ -26,10 +34,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6ro-tY-EGJ">
-                                <rect key="frame" x="261" y="393" width="104" height="75"/>
-                                <animations/>
-                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8Gh-WT-yUb">
                                 <rect key="frame" x="-5" y="516" width="600" height="44"/>
                                 <subviews>
@@ -38,18 +42,21 @@
                                         <animations/>
                                         <items>
                                             <barButtonItem title="ON" id="joY-Ai-GEv">
+                                                <color key="tintColor" red="1" green="0.784921840811174" blue="0.16453253273467217" alpha="1" colorSpace="calibratedRGB"/>
                                                 <connections>
                                                     <action selector="onClick:" destination="BYZ-38-t0r" id="aLh-Ay-7Sb"/>
                                                 </connections>
                                             </barButtonItem>
                                             <barButtonItem width="88" style="plain" systemItem="fixedSpace" id="KAl-Tn-eSO"/>
                                             <barButtonItem title="Result" id="Cww-fs-uMk">
+                                                <color key="tintColor" red="1" green="0.78492184080000005" blue="0.16453253270000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <connections>
                                                     <action selector="resultClick:" destination="BYZ-38-t0r" id="sUZ-WA-3wS"/>
                                                 </connections>
                                             </barButtonItem>
                                             <barButtonItem width="86" style="plain" systemItem="fixedSpace" id="lkE-x8-Fdo"/>
                                             <barButtonItem title="OFF" id="Hgn-Pr-h4E">
+                                                <color key="tintColor" red="1" green="0.78492184080000005" blue="0.16453253270000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <connections>
                                                     <action selector="offClick:" destination="BYZ-38-t0r" id="wQi-6s-zEM"/>
                                                 </connections>
@@ -61,21 +68,28 @@
                                 <animations/>
                             </stackView>
                             <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6fv-2s-gq6">
-                                <rect key="frame" x="-20" y="11" width="324" height="44"/>
+                                <rect key="frame" x="-20" y="20" width="324" height="44"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.33807981014251709" green="0.25257480144500732" blue="0.75911372900009155" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" red="0.1668999561" green="0.84127822360000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="EmoComputing" id="Kv8-dv-k8N">
                                         <barButtonItem key="rightBarButtonItem" title="Settings" id="XJX-Vw-phY">
-                                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="tintColor" red="1" green="0.78492184080000005" blue="0.16453253270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <segue destination="DR1-pg-2e1" kind="show" id="oSo-Ak-QeG"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6ro-tY-EGJ">
+                                <rect key="frame" x="259" y="371" width="104" height="75"/>
+                                <animations/>
+                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -90,20 +104,20 @@
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="e0j-SR-rd9" appends="YES" id="3EV-Ug-Vrs"/>
                             <outletCollection property="gestureRecognizers" destination="4va-bc-ibn" appends="YES" id="0Oy-nw-qa8"/>
-                            <outletCollection property="gestureRecognizers" destination="2Uy-gq-J1G" appends="YES" id="i5J-Nm-fnF"/>
                         </connections>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="backView" destination="oG9-32-g1o" id="MXR-vO-p9B"/>
                         <outlet property="camView" destination="Ffr-uF-W5R" id="xEJ-lK-uIz"/>
                         <outlet property="offButton" destination="W8H-tz-2I2" id="4Vd-q4-Iul"/>
                         <outlet property="onButton" destination="W8H-tz-2I2" id="Ath-Fx-rPe"/>
                         <outlet property="resultButton" destination="Cww-fs-uMk" id="gZJ-8a-gCa"/>
                         <outlet property="resultText" destination="V7x-fy-d14" id="Kkg-im-vUv"/>
                         <outlet property="resultView" destination="6ro-tY-EGJ" id="YNS-uh-vig"/>
-                        <outlet property="rotationSwipe" destination="2Uy-gq-J1G" id="JcB-Ra-uNT"/>
                         <outlet property="swipeDown" destination="e0j-SR-rd9" id="lum-7K-jbp"/>
+                        <outlet property="swipeRight" destination="0Ap-az-i7p" id="bPI-xS-6ky"/>
                         <outlet property="swipeUp" destination="4va-bc-ibn" id="Cy5-vZ-hQ9"/>
                     </connections>
                 </viewController>
@@ -118,13 +132,85 @@
                         <action selector="swipeUpAction:" destination="BYZ-38-t0r" id="fQ1-ed-3lt"/>
                     </connections>
                 </swipeGestureRecognizer>
-                <rotationGestureRecognizer rotation="1" id="2Uy-gq-J1G">
+                <swipeGestureRecognizer direction="right" id="0Ap-az-i7p" userLabel="Swipe Right">
                     <connections>
-                        <action selector="rotationSwipeAction:" destination="BYZ-38-t0r" id="iQa-0p-4cj"/>
+                        <action selector="swipeRightGesture:" destination="BYZ-38-t0r" id="qoM-3A-Fk6"/>
                     </connections>
-                </rotationGestureRecognizer>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="310" y="282"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="PKk-Wz-aHb">
+            <objects>
+                <viewController title="Settings View Controller" id="DR1-pg-2e1" customClass="SettingsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Jh0-q8-gXx"/>
+                        <viewControllerLayoutGuide type="bottom" id="6AD-a5-yUX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HRF-3o-mRw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Vibrate on Face Detection" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4mn-m7-3Le">
+                                <rect key="frame" x="11" y="55" width="240" height="38"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Play Emotion Tunes" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ecX-zy-E1Y">
+                                <rect key="frame" x="11" y="94" width="240" height="34"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L0x-tV-Py4">
+                                <rect key="frame" x="224" y="101" width="51" height="31"/>
+                                <animations/>
+                                <connections>
+                                    <action selector="tunesSwitchAction:" destination="DR1-pg-2e1" eventType="valueChanged" id="0bl-cN-wzQ"/>
+                                </connections>
+                            </switch>
+                            <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TnR-31-knq">
+                                <rect key="frame" x="0.0" y="6" width="305" height="44"/>
+                                <animations/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" red="1" green="0.78492184080000005" blue="0.16453253270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Settings" id="iqc-cf-ekS">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="4Zy-Yp-eP6">
+                                            <color key="tintColor" red="0.33807981009999999" green="0.25257480139999999" blue="0.75911372899999996" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <segue destination="BYZ-38-t0r" kind="show" id="hgf-qT-pOG"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" restorationIdentifier="vibrateSwitch" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eHl-Ux-Nqq">
+                                <rect key="frame" x="224" y="62" width="51" height="31"/>
+                                <animations/>
+                                <connections>
+                                    <action selector="detectionSwitchAction:" destination="DR1-pg-2e1" eventType="valueChanged" id="8KM-EA-VX0"/>
+                                </connections>
+                            </switch>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="TnR-31-knq" firstAttribute="centerX" secondItem="HRF-3o-mRw" secondAttribute="centerX" id="sln-1F-Hcq"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tunesSwitch" destination="L0x-tV-Py4" id="Yyi-jO-vhT"/>
+                        <outlet property="vibrateSwitch" destination="eHl-Ux-Nqq" id="AlZ-BM-MFm"/>
+                        <outlet property="vibrateSwithc" destination="eHl-Ux-Nqq" id="4mW-te-YKN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h2V-No-ag3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1014" y="256"/>
         </scene>
     </scenes>
 </document>
